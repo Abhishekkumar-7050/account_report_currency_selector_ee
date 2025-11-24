@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Multi-Currency Financial Reports for Odoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f5f7fb;">
+
+    <div style="max-width: 1100px; margin: 20px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); padding: 30px;">
+
+        <!-- Header -->
+        <h1 style="font-size: 28px; color: #0056b3; margin-top: 0; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+            Multi-Currency Financial Reports for Odoo
+        </h1>
+        <p style="font-size: 16px; margin-bottom: 10px;">
+            This module adds a <strong>dynamic currency switcher</strong> to Odoo’s accounting reports and performs
+            <strong>real-time financial currency conversion</strong> for every report — without any configuration.
+        </p>
+        <p style="font-size: 16px; font-style: italic; color: #555;">
+            View Balance Sheet, P&L, Aged Receivable/Payable, Trial Balance, General Ledger, Cash Flow & more in any currency.
+        </p>
+
+        <!-- Key Screenshot -->
+        <div style="margin: 25px 0; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; background-color: #fafbff;">
+            <h2 style="font-size: 20px; color: #0056b3; margin-top: 0;">Example: Aged Receivable in AED</h2>
+            <p style="margin-bottom: 10px;">
+                The screenshot below shows the Aged Receivable report using <strong>AED</strong> as the selected currency.
+            </p>
+            <img src="multi-currency-button.png" 
+                 alt="Multi Currency Button"
+                 style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+        </div>
+
+        <!-- Features -->
+        <div style="margin-top: 30px;">
+            <h2 style="font-size: 24px; color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px;">
+                Key Features
+            </h2>
+
+            <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
+                <strong style="color: #218838;">Currency Switcher:</strong> A new button appears in report filters to select any currency.
+            </p>
+
+            <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
+                <strong style="color: #218838;">Instant Conversion:</strong> All balances, totals, subtotals and aging buckets are converted instantly.
+            </p>
+
+            <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
+                <strong style="color: #218838;">Aged Report Support:</strong> Aged Receivable/Payable buckets (1–30, 31–60, 61–90…)
+                are fully converted.
+            </p>
+
+            <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
+                <strong style="color: #218838;">Fully Multi-Company:</strong> Each company’s base currency is converted independently.
+            </p>
+
+            <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
+                <strong style="color: #218838;">No Configuration Needed:</strong>
+                Works automatically with Odoo’s built-in currency rates.
+            </p>
+        </div>
+
+        <!-- Supported Reports -->
+        <div style="margin-top: 30px;">
+            <h2 style="font-size: 24px; color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px;">
+                Supported Reports
+            </h2>
+            <ul style="font-size: 16px;">
+                <li>Balance Sheet</li>
+                <li>Profit &amp; Loss</li>
+                <li>Aged Receivable</li>
+                <li>Aged Payable</li>
+                <li>Cash Flow Statement</li>
+                <li>Executive Summary</li>
+                <li>Trial Balance</li>
+                <li>General Ledger</li>
+                <li>Check Register</li>
+            </ul>
+        </div>
+
+        <!-- Steps With Images -->
+        <div style="margin-top: 30px;">
+            <h2 style="font-size: 24px; color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px;">
+                How to Use
+            </h2>
+
+            <ol style="list-style: none; padding: 0; margin-top: 15px;">
+
+                <!-- Step 1 -->
+                <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 1: Activate Multi-Currency</h3>
+                    <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
+                        Go to <strong>Accounting → Settings</strong> and enable Multi-Currency.
+                    </p>
+                    <img src="multi-currency.png" alt="Enable Multi Currency"
+                         style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                </li>
+
+                <!-- Step 2 -->
+                <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 2: Open the Balance Sheet Report</h3>
+                    <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
+                        Go to <em>Accounting → Reporting → Balance Sheet</em> and use the Currency Switcher.
+                    </p>
+                    <img src="balance-sheet.png" alt="Balance Sheet Report"
+                         style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                </li>
+
+                <!-- Step 3 -->
+                <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 3: Open the Profit &amp; Loss Report</h3>
+                    <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
+                        Select a currency (AED / USD / EUR) to convert the entire P&L report instantly.
+                    </p>
+                    <img src="profit_report.png" alt="Profit & Loss Report"
+                         style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                </li>
+
+                <!-- Step 4 -->
+                <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 4: Check Aged Reports</h3>
+                    <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
+                        Open Aged Receivable & Payable. All aging buckets are converted based on your selected currency.
+                    </p>
+                    <img src="aged_report.png" alt="Aged Report"
+                         style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                </li>
+
+                <!-- Step 5 -->
+                <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 5: Multi-Company Support</h3>
+                    <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
+                        Enable multiple companies for your user and select them. Each company’s base currency is automatically converted.
+                    </p>
+                    <img src="multi-company-support.png" alt="Multi Company Support"
+                         style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                </li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div style="margin-top: 25px; padding-top: 10px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #777;">
+            <p style="margin: 0;">
+                Note: This module does not modify journal entries. All conversions are calculated at report-time.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

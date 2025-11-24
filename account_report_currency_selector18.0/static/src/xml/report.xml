@@ -1,0 +1,67 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>-->
+<templates xml:space="preserve">
+
+    <t t-name="account_report_currency_selector.AccountReportFiltersCustomizable"
+       t-inherit="account_reports.AccountReportFiltersCustomizable"
+       t-inherit-mode="extension">
+
+        <xpath expr="//t[@t-if='env.debug']" position="after">
+            
+            <div id="filter_my_custom_button"  class="o-dropdown dropdown o-dropdown--no-caret">
+                
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    <t t-if="controller.options.custom_currency_id">
+                        <t t-set="selected" t-value="controller.options.available_currencies.find(c => c.id === controller.options.custom_currency_id)"/>
+                        <t t-esc="selected ? selected.name : 'Currency'"/>
+                   </t>
+                   <t t-else="">Currency</t>
+
+                </button>
+
+                <ul class="dropdown-menu" role="menu">
+                    <t t-if="controller.options.available_currencies">
+                        <li t-foreach="controller.options.available_currencies" t-as="currency"
+                            t-key="currency.id"
+                            class="dropdown-item"
+                            t-on-click.prevent="() => this.onCustomButtonClick(currency.id)">
+                            
+                            <span>
+                                <t t-esc="currency.name"/>
+                            </span>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </xpath>
+    </t>
+  
+    <t t-name="age.AgingBasedOnCurrencies"
+       t-inherit="account_reports.AccountReportAgingBasedOn"
+       t-inherit-mode="extension">
+
+        <xpath expr="//Dropdown" position="after">
+
+            <Dropdown>
+                <button style="margin-left:3px;" class="btn btn-primary dropdown-toggle">
+                    <t t-if="controller.options.custom_currency_id">
+                        <t t-set="selected"
+                           t-value="controller.options.available_currencies.find(c => c.id === controller.options.custom_currency_id)" />
+                        <t t-esc="selected ? selected.name : 'Currency'"/>
+                    </t>
+                    <t t-else="">Currency</t>
+                </button>
+
+                <t t-set-slot="content">
+                    <DropdownItem
+                        t-foreach="controller.options.available_currencies"
+                        t-as="currency"
+                        t-key="currency.id"
+                        onSelected="() => this.onCustomButtonClick(currency.id)"
+                    >
+                        <span><t t-esc="currency.name"/></span>
+                    </DropdownItem>
+                </t>
+            </Dropdown>
+        </xpath>
+    </t>
+</templates>
