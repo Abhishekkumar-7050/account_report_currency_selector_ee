@@ -9,8 +9,11 @@
         based on the exchange rate of that currency.
     """,
     'author': 'Abhishek Kumar',
+    'maintainer': 'Abhishek Kumar',
     'company': 'Codetrade India Private Limited',
     'category': 'Accounting/Reporting',
+    'currency': 'USD',
+    'price': 10,
     'web_icon': 'account_report_currency_selector,static/src/img/icon.png',
     'depends': [
         'account_reports', 'account'
@@ -27,5 +30,5 @@
         ],
     },
     'installable': True,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
 }
