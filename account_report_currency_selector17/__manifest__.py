@@ -14,7 +14,7 @@
     'category': 'Accounting/Reporting',
     'currency': 'USD',
     'price': 10,
-    'web_icon': 'account_report_currency_selector,static/src/img/icon.png',
+    'web_icon': 'account_report_currency_selector17,static/src/img/icon.png',
     'depends': [
         'account_reports', 'account'
     ],
@@ -25,8 +25,8 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'account_report_currency_selector/static/src/js/account_report_client_action.js',
-            'account_report_currency_selector/static/src/xml/report.xml',
+            'account_report_currency_selector17/static/src/js/account_report_client_action.js',
+            'account_report_currency_selector17/static/src/xml/report.xml',
         ],
     },
     'installable': True,
