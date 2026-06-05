@@ -1,16 +1,16 @@
 {
     'name': 'Account Report Currency Selector',
-    'version': '18.0.1.0',
+    'version': '19.0.1.0',
     'summary': 'Adds a selector to display financial reports in any active currency.',
     'description': """
-        This module extends the Odoo 18 financial reports (like Balance Sheet)
+        This module extends the Odoo 19 financial reports (like Balance Sheet)
         to include a dropdown menu of all active currencies.
         When a currency is selected, the report values are recalculated
         based on the exchange rate of that currency.
     """,
     'author': 'Abhishek Kumar',
     'maintainer': 'Abhishek Kumar',
-    'company': 'Codetrade India Private Limited',
+    'company': 'Abhicode Technologies',
     'category': 'Accounting/Reporting',
     'currency': 'USD',
     'price': 10,
