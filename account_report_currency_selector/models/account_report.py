@@ -7,6 +7,7 @@ from odoo.tools import SQL, formatLang
 class AccountReport(models.AbstractModel):
     _inherit = "account.report"
 
+    @api.readonly
     def get_options(self, previous_options=None):
         options = super().get_options(previous_options)
 
@@ -82,7 +83,7 @@ class AccountReport(models.AbstractModel):
 
     def _init_options_multi_currency(self, options, previous_options):
         """
-        OVERRIDE: Odoo ko force karein 'multi_currency' mode on karne ke liye.
+        OVERRIDE: Force 'multi_currency' mode on when a custom currency is selected.
         """
         super()._init_options_multi_currency(options, previous_options)
 
@@ -102,7 +103,7 @@ class AccountReport(models.AbstractModel):
         report_line_id=None,
     ):
         """
-        OVERRIDE: Har cell ki currency formatting ko force karein.
+        OVERRIDE: Force the currency formatting of each cell to use the selected currency.
         """
         res = super()._build_column_dict(
             col_value,
@@ -126,7 +127,7 @@ class AccountReport(models.AbstractModel):
 
     def get_report_information(self, options):
         """
-        OVERRIDE: Report ke main symbol ko bhi update karein.
+        OVERRIDE: Update the main report symbol to match the selected currency.
         """
         info = super().get_report_information(options)
 
@@ -134,7 +135,7 @@ class AccountReport(models.AbstractModel):
         if target_currency_id and target_currency_id != self.env.company.currency_id.id:
             target_currency = self.env["res.currency"].browse(target_currency_id)
             info["report"]["company_currency_symbol"] = target_currency.symbol
-            info["report"]["company_country_code"] = "IN"
+            info["report"]["company_country_code"] = self.env.company.country_code
 
             if (
                 "column_headers_render_data" in info
@@ -150,43 +151,9 @@ class AccountReport(models.AbstractModel):
 
         return info
 
-    def _build_column_dict(
-        self,
-        col_value,
-        col_data,
-        options=None,
-        currency=False,
-        digits=1,
-        column_expression=None,
-        has_sublines=False,
-        report_line_id=None,
-    ):
-        """
-        OVERRIDE: Har cell ki currency formatting ko force karein.
-        """
-        res = super()._build_column_dict(
-            col_value,
-            col_data,
-            options,
-            currency,
-            digits,
-            column_expression,
-            has_sublines,
-            report_line_id,
-        )
-
-        target_currency_id = options.get("custom_currency_id")
-        if target_currency_id and target_currency_id != self.env.company.currency_id.id:
-            if res.get("figure_type") == "monetary":
-                target_currency = self.env["res.currency"].browse(target_currency_id)
-                res["format_params"]["currency_id"] = target_currency.id
-                res["currency_symbol"] = target_currency.symbol
-
-        return res
-
     def _format_value(self, options, value, figure_type, format_params=None):
         """
-        OVERRIDE: Format ko force karein taaki woh nayi currency use kare.
+        OVERRIDE: Force the format to use the new currency.
         """
         target_currency_id = options.get("custom_currency_id")
 

@@ -14,7 +14,7 @@ class ResCurrency(models.Model):
     ):
         """
         OVERRIDE:
-        Agar target_currency di gayi hai, toh rates uske hisaab se banayein.
+        If target_currency is provided, build rates accordingly.
         """
         if (
             not target_currency
@@ -98,15 +98,19 @@ class ResCurrency(models.Model):
                     main_company, date_to
                 )[main_company.currency_id.id]
 
+            # In Odoo 19, _get_table_builder_current is called first (unconditionally)
+            table_builders.append(
+                self._get_table_builder_current(
+                    period_key,
+                    main_company,
+                    other_companies,
+                    date_to,
+                    main_company_unit_factor,
+                )
+            )
+
             if use_cta_rates:
                 table_builders += [
-                    self._get_table_builder_closing(
-                        period_key,
-                        main_company,
-                        other_companies,
-                        date_to,
-                        main_company_unit_factor,
-                    ),
                     self._get_table_builder_historical(
                         main_company,
                         other_companies,
@@ -123,21 +127,10 @@ class ResCurrency(models.Model):
                         main_company_unit_factor,
                     ),
                 ]
-            else:
-
-                table_builders += [
-                    self._get_table_builder_current(
-                        period_key,
-                        main_company,
-                        other_companies,
-                        date_to,
-                        main_company_unit_factor,
-                    )
-                ]
 
             last_date_to = date_to
 
-        self._cr.execute(
+        self.env.cr.execute(
             SQL(
                 """
             DROP TABLE IF EXISTS account_currency_table;
@@ -222,63 +215,6 @@ class ResCurrency(models.Model):
                 ) AS t(company_id, period_key, date_from, date_next, rate_type, rate)
                 """,
             vals=SQL(",").join(company_rates),
-        )
-
-    def _get_table_builder_closing(
-        self,
-        period_key,
-        main_company,
-        other_companies,
-        date_to,
-        main_company_unit_factor,
-    ):
-        forced_currency_id = self.env.context.get("custom_currency_id")
-
-        if not forced_currency_id:
-            return super()._get_table_builder_closing(
-                period_key,
-                main_company,
-                other_companies,
-                date_to,
-                main_company_unit_factor,
-            )
-
-        target_currency = self.env["res.currency"].browse(forced_currency_id)
-        target_rate = target_currency._get_rates(main_company, date_to)[
-            target_currency.id
-        ]
-
-        company_rows = []
-
-        fiscal_year_bounds = self._get_currency_table_fiscal_year_bounds(main_company)
-
-        for comp in other_companies:
-            comp_rate = comp.currency_id._get_rates(comp, date_to)[comp.currency_id.id]
-            conversion_rate = target_rate / comp_rate
-
-            for fy_from, fy_to in fiscal_year_bounds:
-                company_rows.append(
-                    SQL(
-                        "(%(cid)s, %(pkey)s, %(fy_from)s, %(fy_to)s, 'closing', %(rate)s)",
-                        cid=comp.id,
-                        pkey=period_key,
-                        fy_from=fy_from,
-                        fy_to=fy_to,
-                        rate=conversion_rate,
-                    )
-                )
-
-        if not company_rows:
-            return SQL("SELECT 1 WHERE false")
-
-        return SQL(
-            """
-                SELECT *
-                FROM (VALUES
-                    %(values)s
-                ) AS t(company_id, period_key, date_from, date_next, rate_type, rate)
-            """,
-            values=SQL(", ").join(company_rows),
         )
 
     def _get_table_builder_historical(
