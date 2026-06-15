@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="search_template_currency" inherit_id="account_reports.search_template">
+        <xpath expr="//div[hasclass('o_account_reports_filter_journals')]" position="after">
+            <div class="btn-group dropdown o_account_reports_filter_currency" t-if="options.get('custom_currency_id') != None">
+                <button type="button" class="o-no-caret btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="fa fa-money"/>
+                    Currency:
+                    <t t-set="selected_currency" t-value="[c for c in options['available_currencies'] if c['id'] == options['custom_currency_id']][0]"/>
+                    <t t-out="selected_currency['name']"/>
+                </button>
+                <div class="dropdown-menu o_filter_menu" role="menu">
+                    <t t-foreach="options['available_currencies']" t-as="c">
+                        <a role="menuitem" class="dropdown-item js_account_reports_one_choice_filter"
+                           t-att-title="c['name']"
+                           t-att-data-id="c['id']"
+                           data-filter="custom_currency_id">
+                            <t t-out="c['name']"/>
+                        </a>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
