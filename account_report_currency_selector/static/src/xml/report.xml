@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="account_report_currency_selector.CurrencyFilter">
+        <t t-if="this.controller.cachedFilterOptions().available_currencies?.length">
+            <div id="filter_custom_currency">
+                <Dropdown>
+                    <button class="btn btn-primary">
+                        <i class="fa fa-money me-1"/>
+                        <t t-out="this.selectedCustomCurrencyName"/>
+                    </button>
+                    <t t-set-slot="content">
+                        <DropdownItem t-foreach="this.controller.cachedFilterOptions().available_currencies"
+                                      t-as="currency" t-key="currency.id"
+                                      class="{ 'selected': currency.id === this.controller.cachedFilterOptions().custom_currency_id }"
+                                      onSelected="() => this.selectCustomCurrency(currency.id)"
+                                      t-out="currency.name"/>
+                    </t>
+                </Dropdown>
+            </div>
+        </t>
+    </t>
+
+    <t t-name="account_report_currency_selector.AccountReportFiltersCustomizable"
+       t-inherit="account_reports.AccountReportFiltersCustomizable"
+       t-inherit-mode="extension">
+        <xpath expr="//div[@id='filter_rounding_unit']" position="before">
+            <t t-call="account_report_currency_selector.CurrencyFilter"/>
+        </xpath>
+    </t>
+
+    <!-- AgedPartnerBalanceFilters is a primary copy: it does not receive the extension above. -->
+    <t t-name="account_report_currency_selector.AgedPartnerBalanceFilters"
+       t-inherit="account_reports.AgedPartnerBalanceFilters"
+       t-inherit-mode="extension">
+        <xpath expr="//div[@id='filter_rounding_unit']" position="before">
+            <t t-call="account_report_currency_selector.CurrencyFilter"/>
+        </xpath>
+    </t>
+</templates>

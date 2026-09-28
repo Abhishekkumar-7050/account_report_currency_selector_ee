@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Multi-Currency Financial Reports for Odoo</title>
+    <title>Multi-Currency Financial Reports for Odoo 20</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
@@ -12,7 +12,7 @@
 
         <!-- Header -->
         <h1 style="font-size: 28px; color: #0056b3; margin-top: 0; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-            Multi-Currency Financial Reports for Odoo
+            Multi-Currency Financial Reports for Odoo 20
         </h1>
         <p style="font-size: 16px; margin-bottom: 10px;">
             This module adds a <strong>dynamic currency switcher</strong> to Odoo’s accounting reports and performs
@@ -24,9 +24,9 @@
 
         <!-- Key Screenshot -->
         <div style="margin: 25px 0; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; background-color: #fafbff;">
-            <h2 style="font-size: 20px; color: #0056b3; margin-top: 0;">Example: Aged Receivable in AED</h2>
+            <h2 style="font-size: 20px; color: #0056b3; margin-top: 0;">Example: Aged Receivable in EUR</h2>
             <p style="margin-bottom: 10px;">
-                The screenshot below shows the Aged Receivable report using <strong>AED</strong> as the selected currency.
+                A new <strong>currency button</strong> sits next to the other report filters. Pick any active currency and the report reloads with every amount converted.
             </p>
             <img src="multi-currency-button.png" 
                  alt="Multi Currency Button"
@@ -53,12 +53,12 @@
             </p>
 
             <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
-                <strong style="color: #218838;">Fully Multi-Company:</strong> Each company’s base currency is converted independently.
+                <strong style="color: #218838;">Fully Multi-Company:</strong> Consolidated reports across companies with different currencies are converted to the selected currency.
             </p>
 
             <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #28a745; border-radius: 4px; margin-bottom: 10px;">
                 <strong style="color: #218838;">No Configuration Needed:</strong>
-                Works automatically with Odoo’s built-in currency rates.
+                Works automatically with Odoo’s built-in currency rates (rate at the report end date).
             </p>
         </div>
 
@@ -76,7 +76,7 @@
                 <li>Executive Summary</li>
                 <li>Trial Balance</li>
                 <li>General Ledger</li>
-                <li>Check Register</li>
+                <li>Partner Ledger</li>
             </ul>
         </div>
 
@@ -90,9 +90,9 @@
 
                 <!-- Step 1 -->
                 <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
-                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 1: Activate Multi-Currency</h3>
+                    <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 1: Activate Your Currencies</h3>
                     <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
-                        Go to <strong>Accounting → Settings</strong> and enable Multi-Currency.
+                        Go to <strong>Accounting → Configuration → Currencies</strong> and activate the currencies you want to report in. Make sure each one has an exchange rate. Only active currencies appear in the selector.
                     </p>
                     <img src="multi-currency.png" alt="Enable Multi Currency"
                          style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
@@ -102,7 +102,7 @@
                 <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
                     <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 2: Open the Balance Sheet Report</h3>
                     <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
-                        Go to <em>Accounting → Reporting → Balance Sheet</em> and use the Currency Switcher.
+                        Go to <em>Accounting → Reporting → Balance Sheet</em> and choose a currency from the currency button. The example shows it in EUR.
                     </p>
                     <img src="balance-sheet.png" alt="Balance Sheet Report"
                          style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
@@ -112,7 +112,7 @@
                 <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
                     <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 3: Open the Profit &amp; Loss Report</h3>
                     <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
-                        Select a currency (AED / USD / EUR) to convert the entire P&L report instantly.
+                        Select a currency to convert the entire P&amp;L report instantly. The example shows it in AED.
                     </p>
                     <img src="profit_report.png" alt="Profit & Loss Report"
                          style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
@@ -122,7 +122,7 @@
                 <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
                     <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 4: Check Aged Reports</h3>
                     <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
-                        Open Aged Receivable & Payable. All aging buckets are converted based on your selected currency.
+                        Open Aged Receivable or Aged Payable. All aging buckets and totals are converted to the selected currency. The example shows Aged Payable in INR.
                     </p>
                     <img src="aged_report.png" alt="Aged Report"
                          style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
@@ -132,7 +132,7 @@
                 <li style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 18px; margin-bottom: 15px;">
                     <h3 style="margin: 0 0 5px; font-size: 18px; color: #343a40;">Step 5: Multi-Company Support</h3>
                     <p style="margin: 0 0 10px; font-size: 15px; color: #6c757d;">
-                        Enable multiple companies for your user and select them. Each company’s base currency is automatically converted.
+                        Select several companies in the company switcher. The consolidated figures are converted to the currency you pick. The example combines a USD company and an AED company, shown in EUR.
                     </p>
                     <img src="multi-company-support.png" alt="Multi Company Support"
                          style="width: 100%; border-radius: 5px; border: 1px solid #ddd;">
@@ -144,6 +144,9 @@
         <div style="margin-top: 25px; padding-top: 10px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #777;">
             <p style="margin: 0;">
                 Note: This module does not modify journal entries. All conversions are calculated at report-time.
+            </p>
+            <p style="margin: 5px 0 0;">
+                Compatible with <strong>Odoo 20 Enterprise</strong> (requires the Accounting app / <code>account_reports</code>).
             </p>
         </div>
 

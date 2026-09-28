@@ -1,75 +1,70 @@
+# -*- coding: utf-8 -*-
+from odoo import models
 
-from odoo import models, fields, api, _
+from odoo.addons.account_reports.utils.report_data_objects import AccountReportColumnFormatParamsData
+
 
 class AccountReport(models.Model):
-    _inherit = 'account.report'
+    _inherit = "account.report"
+
+    def _get_custom_currency(self, options):
+        """ Return the currency selected in the report options, or an empty
+        recordset when the report is displayed in the company currency.
+        """
+        currency_id = (options or {}).get("custom_currency_id")
+        if not currency_id or currency_id == self.env.company.currency_id.id:
+            return self.env["res.currency"]
+        return self.env["res.currency"].browse(currency_id).exists()
+
+    def _init_options_custom_currency(self, options, previous_options):
+        currencies = self.env["res.currency"].search([("active", "=", True)], order="name")
+        options["available_currencies"] = [{"id": c.id, "name": c.name} for c in currencies]
+
+        currency_id = (previous_options or {}).get("custom_currency_id")
+        if currency_id and int(currency_id) in currencies.ids:
+            options["custom_currency_id"] = int(currency_id)
+        else:
+            options["custom_currency_id"] = self.env.company.currency_id.id
+        options["selected_currency_name"] = self.env["res.currency"].browse(options["custom_currency_id"]).name
+
+    def _init_options_multi_currency(self, options, previous_options):
+        # Force the currency symbol display when a custom currency is selected.
+        super()._init_options_multi_currency(options, previous_options)
+        if self._get_custom_currency(previous_options):
+            options["multi_currency"] = True
 
     def _get_options_initializers_forced_sequence_map(self):
-        res = super()._get_options_initializers_forced_sequence_map()
-        res[self._init_options_custom_currency] = 1040
-        return res
+        sequence_map = super()._get_options_initializers_forced_sequence_map()
+        # Must run before _init_options_multi_currency, which reads its result.
+        sequence_map[self._init_options_custom_currency] = sequence_map.get(self._init_options_multi_currency, 1000) - 1
+        return sequence_map
 
-    def _init_options_custom_currency(self, options, previous_options=None):
-        default_currency_id = self.env.company.currency_id.id
-        selected_currency_id = (previous_options or {}).get('custom_currency_id') or default_currency_id
-        
-        options['custom_currency_id'] = int(selected_currency_id)
+    def _get_report_query(self, options, date_scope, domain=None, cta_date_to=None):
+        # The context is propagated to account.move.line's consolidation_rate SQL computation.
+        report = self.with_context(custom_currency_id=self._get_custom_currency(options).id or False)
+        return super(AccountReport, report)._get_report_query(options, date_scope, domain=domain, cta_date_to=cta_date_to)
 
-        currencies = self.env['res.currency'].search([('active', '=', True)], order="name ASC")
-        options['available_currencies'] = [
-            {'id': c.id, 'name': c.name, 'selected': c.id == options['custom_currency_id']}
-            for c in currencies
-        ]
-        
-        custom_currency_id = options.get('custom_currency_id')
-        if custom_currency_id and custom_currency_id != self.env.company.currency_id.id:
-            options['multi_currency'] = True
+    def _build_column_data(self, col_value, options_col_desc, options=None, currency=None, digits=1,
+                           column_expression=None, has_sublines=False, report_line_id=None):
+        target_currency = self._get_custom_currency(options)
+        if target_currency and (not currency or currency == self.env.company.currency_id):
+            currency = target_currency
+        return super()._build_column_data(
+            col_value, options_col_desc, options=options, currency=currency, digits=digits,
+            column_expression=column_expression, has_sublines=has_sublines, report_line_id=report_line_id,
+        )
 
-    def _get_lines(self, options, all_column_groups_expression_totals=None):
-        lines = super()._get_lines(options, all_column_groups_expression_totals)
+    def _format_value(self, options, value, figure_type, format_params=None):
+        target_currency = self._get_custom_currency(options)
+        if target_currency and figure_type == "monetary" and (format_params is None or not format_params.currency_id):
+            if format_params is None:
+                format_params = AccountReportColumnFormatParamsData()
+            format_params.currency_id = target_currency.id
+        return super()._format_value(options, value, figure_type, format_params=format_params)
 
-        target_currency_id = options.get('custom_currency_id')
-        company_currency = self.env.company.currency_id
-
-        if target_currency_id and target_currency_id != company_currency.id:
-            target_currency = self.env['res.currency'].browse(target_currency_id)
-            date_to = fields.Date.context_today(self)
-            if options.get('date') and options['date'].get('date_to'):
-                date_to = fields.Date.from_string(options['date']['date_to'])
-
-            for line in lines:
-                for i, col in enumerate(line.get('columns', [])):
-                    if 'no_format' in col and isinstance(col['no_format'], (int, float)):
-                        col_data = options['columns'][i] if i < len(options.get('columns', [])) else {}
-                        
-                        is_monetary = False
-                        if col_data.get('figure_type') == 'monetary':
-                            is_monetary = True
-                        elif company_currency.symbol and company_currency.symbol in col.get('name', ''):
-                            is_monetary = True
-                        elif company_currency.name and company_currency.name in col.get('name', ''):
-                            is_monetary = True
-                            
-                        if is_monetary:
-                            original_value = col['no_format']
-                            converted = company_currency._convert(
-                                original_value, target_currency, self.env.company, date_to
-                            )
-                            col['no_format'] = converted
-                            
-                            blank_if_zero = (col.get('name') == '')
-                            
-                            col['name'] = self.format_value(
-                                converted,
-                                figure_type='monetary',
-                                blank_if_zero=blank_if_zero,
-                                currency=target_currency
-                            )
-                            
-                            if hasattr(self, 'is_zero'):
-                                col['is_zero'] = self.is_zero(converted, figure_type='monetary', currency=target_currency)
-                            else:
-                                col['is_zero'] = (converted == 0)
-
-        return lines
-
+    def get_report_information(self, options):
+        info = super().get_report_information(options)
+        target_currency = self._get_custom_currency(options)
+        if target_currency and info.get("report"):
+            info["report"]["company_currency_symbol"] = target_currency.symbol
+        return info
