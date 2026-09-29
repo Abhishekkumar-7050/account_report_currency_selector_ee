@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.business_change_tracker</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Change Tracker" string="Change Tracker" name="business_change_tracker"
+                     groups="business_change_tracker.group_business_change_manager">
+                    <block title="Change History" name="business_change_tracker">
+                        <setting id="bct_rules" string="Tracking Rules" help="Choose which models and fields keep a change history">
+                            <button type="action" name="%(business_change_tracker.action_business_change_rule)d"
+                                    string="Configure Tracking Rules" icon="oi-arrow-right" class="btn-link"/>
+                            <button type="object" name="action_bct_load_presets"
+                                    string="Load Suggested Rules" icon="oi-arrow-right" class="btn-link"
+                                    help="Creates disabled rules for Sales, Purchase, Invoices, Contacts and Transfers when installed."/>
+                        </setting>
+                        <setting id="bct_retention" string="Retention" help="Older history is deleted daily. 'Forever' never deletes anything.">
+                            <field name="bct_retention_days"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_business_change_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module': 'business_change_tracker', 'bin_size': False}</field>
+    </record>
+</odoo>

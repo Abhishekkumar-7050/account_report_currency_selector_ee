@@ -1,0 +1,423 @@
+<!-- ============================================================ -->
+<!--  Business Change Tracker — Odoo Apps Store description page -->
+<!-- ============================================================ -->
+
+<!-- HERO -->
+<section style="background: linear-gradient(135deg, #26185c 0%, #3b2a8f 45%, #006e78 100%); border-radius: 18px; padding: 56px 32px 0 32px; margin-bottom: 48px; overflow: hidden;">
+    <div class="container" style="max-width: 1100px;">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-4">
+                <img src="icon.png" alt="Business Change Tracker" style="width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,.35);"/>
+                <h1 style="color: #fff; font-weight: 800; font-size: 44px; line-height: 1.1; margin: 24px 0 12px 0;">
+                    Business Change <span style="color: #ffbe3c;">Tracker</span>
+                </h1>
+                <p style="color: #dfe3f5; font-size: 19px; line-height: 1.55; margin-bottom: 24px;">
+                    See something different in Odoo? Find out in seconds <b style="color:#fff;">what changed</b>,
+                    <b style="color:#fff;">who changed it</b>, <b style="color:#fff;">when</b>, and the
+                    <b style="color:#fff;">value before and after</b>, shown in business terms rather than database IDs.
+                </p>
+                <div style="margin-bottom: 28px;">
+                    <span style="display:inline-block; border:1px solid rgba(255,255,255,.6); color:#fff; border-radius:30px; padding:6px 16px; margin:0 6px 8px 0; font-size:14px;">Odoo 19</span>
+                    <span style="display:inline-block; border:1px solid rgba(255,255,255,.6); color:#fff; border-radius:30px; padding:6px 16px; margin:0 6px 8px 0; font-size:14px;">Community &amp; Enterprise</span>
+                    <span style="display:inline-block; border:1px solid rgba(255,255,255,.6); color:#fff; border-radius:30px; padding:6px 16px; margin:0 6px 8px 0; font-size:14px;">No code required</span>
+                    <span style="display:inline-block; border:1px solid rgba(255,255,255,.6); color:#fff; border-radius:30px; padding:6px 16px; margin:0 6px 8px 0; font-size:14px;">Depends only on <code style="color:#ffbe3c;">base</code></span>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <img src="screenshot_02_record_history.png" alt="Change History of a sales order" class="img-fluid"
+                     style="border-radius: 14px 14px 0 0; box-shadow: 0 -4px 40px rgba(0,0,0,.45); display:block;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE FOUR QUESTIONS -->
+<section class="container" style="max-width: 1100px; margin-bottom: 56px;">
+    <h2 style="text-align:center; font-weight:800; color:#26185c; margin-bottom:8px;">One screen answers four questions</h2>
+    <p style="text-align:center; color:#6b6f80; font-size:17px; margin-bottom:32px;">Designed for managers and business users, not only for developers.</p>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div style="background:#f5f3ff; border-radius:14px; padding:24px; height:100%; border-top:4px solid #5b39d0;">
+                <div style="font-size:30px;">🔍</div>
+                <h4 style="font-weight:700; color:#26185c; margin-top:10px;">What changed?</h4>
+                <p style="color:#555; margin:0;">The field, shown by its label (<i>Unit Price</i>, <i>Delivery Date</i>), and the document or line it belongs to.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div style="background:#eefaf9; border-radius:14px; padding:24px; height:100%; border-top:4px solid #00aba6;">
+                <div style="font-size:30px;">👤</div>
+                <h4 style="font-weight:700; color:#26185c; margin-top:10px;">Who changed it?</h4>
+                <p style="color:#555; margin:0;">The real user, even for changes made through <code>sudo()</code>, imports or automated actions.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div style="background:#fff8eb; border-radius:14px; padding:24px; height:100%; border-top:4px solid #ffbe3c;">
+                <div style="font-size:30px;">🕒</div>
+                <h4 style="font-weight:700; color:#26185c; margin-top:10px;">When?</h4>
+                <p style="color:#555; margin:0;">The exact date and time, displayed in each viewer's own timezone and date format.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div style="background:#fdf1f3; border-radius:14px; padding:24px; height:100%; border-top:4px solid #e0475c;">
+                <div style="font-size:30px;">⇄</div>
+                <h4 style="font-weight:700; color:#26185c; margin-top:10px;">Before &amp; after?</h4>
+                <p style="color:#555; margin:0;"><b>$ 5.00 → $ 4.50</b>, <b>ABC Packaging → XYZ Corp</b>, <b>Quotation → Sales Order</b>. Never <code>7 → 12</code>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY NOT CHATTER -->
+<section class="container" style="max-width: 1100px; margin-bottom: 56px;">
+    <div style="background:#fafafe; border:1px solid #e6e3f5; border-radius:18px; padding:36px;">
+        <h2 style="font-weight:800; color:#26185c; margin-bottom:6px;">Why chatter tracking isn't enough</h2>
+        <p style="color:#6b6f80; font-size:16px; margin-bottom:24px;">
+            Odoo's chatter shows some changes, but only for fields developers flagged in code, only on documents that have a chatter, and mixed in with messages.
+            On an order, it shows the <i>total</i> moving from $ 5,451 to $ 4,416 but not <b>which line</b> changed, <b>what price</b>, or <b>who</b> did it.
+            Business Change Tracker keeps working alongside chatter and fills those gaps.
+        </p>
+        <div class="table-responsive">
+            <table class="table" style="background:#fff; border-radius:10px; overflow:hidden; margin:0;">
+                <thead style="background:#26185c; color:#fff;">
+                    <tr><th style="padding:12px 16px;">Need</th><th style="padding:12px 16px; text-align:center;">Standard chatter</th><th style="padding:12px 16px; text-align:center;">Business Change Tracker</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding:10px 16px;">Choose the tracked fields without writing code</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">Order <b>lines</b>: price, quantity, discount, product</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓ shown on the order</td></tr>
+                    <tr><td style="padding:10px 16px;">Values Odoo resets automatically (e.g. payment terms reset when the customer changes)</td><td style="text-align:center;">partial</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">Models without a chatter</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">Deleted records: who deleted what, and when</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">One global, searchable list of every business change</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">Keeps working when code disables chatter tracking (<code>mail_notrack</code>, <code>tracking_disable</code>)</td><td style="text-align:center;">✗</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                    <tr><td style="padding:10px 16px;">History can't be edited or deleted</td><td style="text-align:center;">✗ (messages can be deleted)</td><td style="text-align:center; color:#00897b; font-weight:700;">✓</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: ACTION MENU -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div class="row align-items-center">
+        <div class="col-lg-5 mb-4">
+            <span style="color:#5b39d0; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 1</span>
+            <h2 style="font-weight:800; color:#26185c; margin:6px 0 14px 0;">"Change History" on every tracked document</h2>
+            <p style="color:#555; font-size:16px;">Open any tracked record, such as a sales order, purchase order, invoice, contact, transfer or your own custom model, and choose
+               <b>⚙ Actions → Change History</b>. Nothing to install per app and no form customisation: the entry appears automatically as soon as a tracking rule is enabled,
+               in both form and list views.</p>
+            <ul style="color:#555; font-size:15px; padding-left:18px;">
+                <li>Available to users of the <b>Change Tracker / User</b> group</li>
+                <li>Works on one or several selected records from a list</li>
+                <li>Removed automatically when the rule is disabled</li>
+            </ul>
+        </div>
+        <div class="col-lg-7"><img src="screenshot_01_action_menu.png" class="img-fluid" alt="Change History in the Action menu" style="border-radius:12px; box-shadow:0 10px 36px rgba(38,24,92,.18);"/></div>
+    </div>
+</section>
+
+<!-- FEATURE: RECORD HISTORY -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div class="row align-items-center flex-lg-row-reverse">
+        <div class="col-lg-5 mb-4">
+            <span style="color:#00aba6; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 2</span>
+            <h2 style="font-weight:800; color:#26185c; margin:6px 0 14px 0;">The whole story of a document, lines included</h2>
+            <p style="color:#555; font-size:16px;">The history of an order also lists the changes of its <b>order lines</b>: unit price, quantity, discount, product,
+               including lines that were <b>deleted</b>. Each row shows the date, the user, the field, and the old and new values.</p>
+            <ul style="color:#555; font-size:15px; padding-left:18px;">
+                <li><b>Changed</b>, <b>Created</b> and <b>Deleted</b> badges</li>
+                <li>Line changes are linked to their parent through the <i>"Show Changes On"</i> option</li>
+                <li>Search, filter and group inside a single record's history</li>
+            </ul>
+        </div>
+        <div class="col-lg-7"><img src="screenshot_02_record_history.png" class="img-fluid" alt="Record change history" style="border-radius:12px; box-shadow:0 10px 36px rgba(38,24,92,.18);"/></div>
+    </div>
+</section>
+
+<!-- FEATURE: HUMAN READABLE VALUES -->
+<section style="background:#f7f6fd; padding:56px 0; margin-bottom:64px; border-radius:18px;">
+    <div class="container" style="max-width: 1100px;">
+        <span style="color:#5b39d0; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 3</span>
+        <h2 style="font-weight:800; color:#26185c; margin:6px 0 10px 0;">Values people can read</h2>
+        <p style="color:#555; font-size:16px; margin-bottom:26px;">Every field type is displayed the way users see it in Odoo. Names are captured at the moment of the change,
+            so the history stays readable even after the related record is renamed or deleted.</p>
+        <div class="table-responsive">
+            <table class="table" style="background:#fff; margin:0;">
+                <thead style="background:#ece8fb;">
+                    <tr><th style="padding:12px 16px;">Field type</th><th style="padding:12px 16px;">Database value</th><th style="padding:12px 16px;">What the user sees</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding:10px 16px;">Many2one</td><td><code>7 → 12</code></td><td><b>ABC Packaging → XYZ Corp</b></td></tr>
+                    <tr><td style="padding:10px 16px;">Selection</td><td><code>draft → sale</code></td><td><b>Quotation → Sales Order</b></td></tr>
+                    <tr><td style="padding:10px 16px;">Price / Monetary</td><td><code>5.0 → 4.5</code></td><td><b>$ 5.00 → $ 4.50</b> (document currency)</td></tr>
+                    <tr><td style="padding:10px 16px;">Integer / Float</td><td><code>1000 → 800</code></td><td><b>1,000 → 800</b> with the field's precision and the user's number format</td></tr>
+                    <tr><td style="padding:10px 16px;">Date</td><td><code>2026-10-10</code></td><td><b>10/10/2026</b> in the user's date format</td></tr>
+                    <tr><td style="padding:10px 16px;">Datetime</td><td><code>2026-10-10 04:30 UTC</code></td><td><b>10/10/2026 10:00 AM</b> in the <u>viewer's</u> timezone</td></tr>
+                    <tr><td style="padding:10px 16px;">Boolean</td><td><code>False → True</code></td><td><b>No → Yes</b></td></tr>
+                    <tr><td style="padding:10px 16px;">Many2many (tags…)</td><td><code>[3] → [5]</code></td><td><b>Added: Key Account<br/>Removed: VIP Customer</b></td></tr>
+                    <tr><td style="padding:10px 16px;">HTML</td><td><code>&lt;p&gt;Hello&lt;/p&gt;</code></td><td><b>Hello</b>, converted to safe plain text (no script injection)</td></tr>
+                    <tr><td style="padding:10px 16px;">Char / Text</td><td>very long text</td><td>kept up to 2,000 characters, then truncated with "…"</td></tr>
+                    <tr><td style="padding:10px 16px;">Empty value</td><td><code>False</code></td><td><b>—</b></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row" style="margin-top:32px;">
+            <div class="col-md-6 mb-3"><img src="screenshot_04_contact_history.png" class="img-fluid" alt="Tags added and removed on a contact" style="border-radius:12px; box-shadow:0 10px 30px rgba(38,24,92,.15);"/>
+                <p style="text-align:center; color:#6b6f80; margin-top:10px;">Contact history: tags <b>added / removed</b>, phone, email, city</p></div>
+            <div class="col-md-6 mb-3"><img src="screenshot_03_change_detail.png" class="img-fluid" alt="Detail of one change" style="border-radius:12px; box-shadow:0 10px 30px rgba(38,24,92,.15);"/>
+                <p style="text-align:center; color:#6b6f80; margin-top:10px;">One change in detail, with <b>Open Record</b> navigation</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: GLOBAL HISTORY -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <span style="color:#00aba6; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 4</span>
+    <h2 style="font-weight:800; color:#26185c; margin:6px 0 10px 0;">Global Change History, for investigations across the company</h2>
+    <p style="color:#555; font-size:16px; margin-bottom:24px;"><b>Change Tracker → Change History</b> lists every business change in one place. Use it to answer questions like
+        "who changed prices this week?", "what did this user modify yesterday?" or "which documents were deleted?".</p>
+    <img src="screenshot_05_global_history.png" class="img-fluid" alt="Global change history" style="border-radius:12px; box-shadow:0 10px 36px rgba(38,24,92,.18); margin-bottom:28px;"/>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div style="border:1px solid #e6e3f5; border-radius:12px; padding:20px; height:100%;">
+                <h5 style="font-weight:700; color:#26185c;">Search</h5>
+                <p style="color:#555; margin:0;">By record or document name (for example <i>S00833</i> also finds its lines), field, user, model, company, and even by <b>old or new value</b> ("who set this email?").</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div style="border:1px solid #e6e3f5; border-radius:12px; padding:20px; height:100%;">
+                <h5 style="font-weight:700; color:#26185c;">Filter</h5>
+                <p style="color:#555; margin:0;"><b>Changes</b>, <b>Creations</b>, <b>Deletions</b>, <b>My Changes</b>, and any <b>date</b> period (today, this week, this month, a custom range).</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div style="border:1px solid #e6e3f5; border-radius:12px; padding:20px; height:100%;">
+                <h5 style="font-weight:700; color:#26185c;">Group by</h5>
+                <p style="color:#555; margin:0;"><b>Model</b>, <b>Record</b>, <b>Field</b>, <b>User</b>, <b>Operation</b>, <b>Company</b> and <b>Day</b>, with nested groups such as Model › User.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:12px;">
+        <div class="col-md-6 mb-3"><img src="screenshot_06_filters.png" class="img-fluid" alt="Filters and group by" style="border-radius:12px; box-shadow:0 10px 30px rgba(38,24,92,.15);"/></div>
+        <div class="col-md-6 mb-3"><img src="screenshot_07_grouped.png" class="img-fluid" alt="Grouped by model and user" style="border-radius:12px; box-shadow:0 10px 30px rgba(38,24,92,.15);"/></div>
+    </div>
+</section>
+
+<!-- FEATURE: DELETED + HIDDEN CHANGES -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div class="row align-items-center">
+        <div class="col-lg-5 mb-4">
+            <span style="color:#e0475c; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 5</span>
+            <h2 style="font-weight:800; color:#26185c; margin:6px 0 14px 0;">Deletions and silent changes are recorded too</h2>
+            <p style="color:#555; font-size:16px;"><b>Deleted records.</b> When a record is deleted, a <b>Deleted</b> entry keeps its name, its parent document,
+               the user and the time. Its history stays available. The entry clearly shows <b>"Record no longer exists."</b>, and the module never pretends it can rebuild the deleted record.</p>
+            <p style="color:#555; font-size:16px;"><b>Changes Odoo makes on its own.</b> Some values change without anybody typing them. For example, changing the customer of an order
+               resets its <i>payment terms</i> and <i>pricelist</i>. Those automatic changes are recorded as well, with the user whose action caused them.</p>
+            <p style="color:#555; font-size:16px;"><b>Creations.</b> Optionally log a <b>Created</b> event for each new record.</p>
+        </div>
+        <div class="col-lg-7"><img src="screenshot_08_deleted_record.png" class="img-fluid" alt="Deleted record" style="border-radius:12px; box-shadow:0 10px 36px rgba(38,24,92,.18);"/></div>
+    </div>
+</section>
+
+<!-- FEATURE: CONFIGURATION -->
+<section style="background:#eefaf9; padding:56px 0; margin-bottom:64px; border-radius:18px;">
+    <div class="container" style="max-width: 1100px;">
+        <span style="color:#00897b; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 6</span>
+        <h2 style="font-weight:800; color:#26185c; margin:6px 0 10px 0;">You decide what's worth tracking</h2>
+        <p style="color:#555; font-size:16px; margin-bottom:24px;">Nothing is tracked until you enable it. A <b>tracking rule</b> is simply a model plus the business fields you care about.
+            No code, no server restart: changes to rules apply immediately on every worker.</p>
+        <div class="row">
+            <div class="col-md-6 mb-3"><img src="screenshot_09_tracking_rules.png" class="img-fluid" alt="Tracking rules" style="border-radius:12px; box-shadow:0 10px 30px rgba(0,110,120,.15);"/></div>
+            <div class="col-md-6 mb-3"><img src="screenshot_10_rule_form.png" class="img-fluid" alt="Tracking rule form" style="border-radius:12px; box-shadow:0 10px 30px rgba(0,110,120,.15);"/></div>
+        </div>
+        <div class="row" style="margin-top:16px;">
+            <div class="col-md-6">
+                <ul style="color:#555; font-size:15px; padding-left:18px;">
+                    <li><b>Enable / disable</b> a rule with one toggle</li>
+                    <li><b>Tracked Fields</b>: add or remove any stored field of a supported type</li>
+                    <li><b>Log Creation / Log Deletion</b>: record create and delete events</li>
+                    <li><b>Show Changes On</b>: display line changes on the parent document</li>
+                    <li><b>Changes</b> smart button: open the history of that model</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul style="color:#555; font-size:15px; padding-left:18px;">
+                    <li><b>Suggested rules</b> for Sales, Purchase, Invoicing, Contacts and Inventory, created <u>disabled</u> for you to review</li>
+                    <li><b>Load Suggested Rules</b> button for apps you install later</li>
+                    <li>Built-in validation: invalid fields, one2many and non-stored fields, technical models and wizards are rejected</li>
+                    <li>One rule per model, so there's never any doubt about what is tracked</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SUPPORTED MODELS -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <h2 style="font-weight:800; color:#26185c; margin-bottom:10px;">Ready-made rules for your key documents</h2>
+    <p style="color:#555; font-size:16px; margin-bottom:22px;">Suggested rules are created only for the apps installed in your database. Any other model, including models from your
+        own custom modules, can be tracked the same way.</p>
+    <div class="table-responsive">
+        <table class="table table-striped" style="margin:0;">
+            <thead style="background:#26185c; color:#fff;"><tr><th style="padding:12px 16px;">Document</th><th style="padding:12px 16px;">Suggested tracked fields</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px 16px;"><b>Sales Order</b></td><td>Customer, Salesperson, Delivery Date, Payment Terms, Pricelist, Status</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Sales Order Line</b> <small style="color:#888;">(shown on the order)</small></td><td>Product, Quantity, Unit Price, Discount, Unit</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Purchase Order</b></td><td>Vendor, Expected Arrival, Payment Terms, Currency, Status</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Purchase Order Line</b> <small style="color:#888;">(shown on the order)</small></td><td>Product, Quantity, Unit Price, Expected Arrival</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Invoice / Journal Entry</b></td><td>Partner, Invoice Date, Due Date, Payment Terms, Reference, Status</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Contact</b></td><td>Name, Email, Phone, Tax ID, Street, City, Country, Tags, Salesperson</td></tr>
+                <tr><td style="padding:10px 16px;"><b>Transfer</b></td><td>Contact, Scheduled Date, Source Document, Destination Location, Status</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- SECURITY -->
+<section style="background:#26185c; padding:56px 0; margin-bottom:64px; border-radius:18px;">
+    <div class="container" style="max-width: 1100px;">
+        <span style="color:#ffbe3c; font-weight:700; letter-spacing:.08em; font-size:13px;">FEATURE 7</span>
+        <h2 style="font-weight:800; color:#fff; margin:6px 0 10px 0;">Secure by design: history never reveals what users can't see</h2>
+        <p style="color:#d6d9ee; font-size:16px; margin-bottom:28px;">History is audit evidence. It follows Odoo's own security everywhere, so you don't have to maintain a second set of permissions.</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">🔐 Same rights as the document</h5>
+                <p style="color:#d6d9ee; margin:0;">A history entry is visible only to users who can read the underlying record, respecting access rights and <b>record rules</b>. A salesperson limited to "own documents" doesn't see the history of colleagues' orders.</p></div></div>
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">🙈 Restricted fields stay hidden</h5>
+                <p style="color:#d6d9ee; margin:0;">If a field is restricted to certain groups, users outside those groups see <b>Restricted</b> instead of the old and new values.</p></div></div>
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">🏢 Multi-company</h5>
+                <p style="color:#d6d9ee; margin:0;">Each entry belongs to the record's company. Users only see the companies they are allowed in. Shared records (without a company) remain visible to all companies.</p></div></div>
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">🧾 Immutable</h5>
+                <p style="color:#d6d9ee; margin:0;">Nobody can create, edit or delete history entries, <b>not even an administrator</b>, from the interface or the API. The only deletion path is the retention policy you configure.</p></div></div>
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">👥 Two simple groups</h5>
+                <p style="color:#d6d9ee; margin:0;"><b>User</b>: sees the history of records they can read.<br/><b>Manager</b>: also configures rules and sees the history of deleted records.</p></div></div>
+            <div class="col-md-6 col-lg-4 mb-3"><div style="background:rgba(255,255,255,.07); border-radius:12px; padding:20px; height:100%;">
+                <h5 style="color:#fff; font-weight:700;">↩️ Transaction safe</h5>
+                <p style="color:#d6d9ee; margin:0;">History is saved in the same transaction as the business change. If the operation fails and rolls back, no false history entry remains.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT IS CAPTURED -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div class="row">
+        <div class="col-lg-7 mb-4">
+            <h2 style="font-weight:800; color:#26185c; margin-bottom:10px;">Captures changes however they're made</h2>
+            <div class="table-responsive">
+                <table class="table" style="margin:0;">
+                    <thead style="background:#ece8fb;"><tr><th style="padding:10px 14px;">Change made through</th><th style="padding:10px 14px;">Recorded</th><th style="padding:10px 14px;">"Changed By"</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:9px 14px;">Form and list views (incl. inline order lines)</td><td style="color:#00897b; font-weight:700;">✓</td><td>the user</td></tr>
+                        <tr><td style="padding:9px 14px;">List multi-edit / batch updates</td><td style="color:#00897b; font-weight:700;">✓ one entry per record</td><td>the user</td></tr>
+                        <tr><td style="padding:9px 14px;">Import (Excel / CSV)</td><td style="color:#00897b; font-weight:700;">✓ only rows that really changed</td><td>the importing user</td></tr>
+                        <tr><td style="padding:9px 14px;">Automated actions</td><td style="color:#00897b; font-weight:700;">✓</td><td>the user who triggered it</td></tr>
+                        <tr><td style="padding:9px 14px;">Scheduled actions</td><td style="color:#00897b; font-weight:700;">✓</td><td>the scheduled action's user</td></tr>
+                        <tr><td style="padding:9px 14px;">Server code, <code>sudo()</code>, API / XML-RPC</td><td style="color:#00897b; font-weight:700;">✓</td><td>the real user</td></tr>
+                        <tr><td style="padding:9px 14px;">Saving without changing anything</td><td style="color:#888;">nothing (no noise)</td><td>–</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-5 mb-4">
+            <h2 style="font-weight:800; color:#26185c; margin-bottom:10px;">Retention</h2>
+            <p style="color:#555; font-size:16px;">Keep history <b>Forever</b> (default), or for <b>30, 90, 180 or 365 days</b>. A daily scheduled action removes older entries:</p>
+            <ul style="color:#555; font-size:15px; padding-left:18px;">
+                <li>never deletes anything in <i>Forever</i> mode;</li>
+                <li>never deletes entries younger than 30 days;</li>
+                <li>works in batches, so large databases are cleaned progressively;</li>
+                <li>adds nothing to the history itself.</li>
+            </ul>
+            <img src="screenshot_11_settings.png" class="img-fluid" alt="Settings" style="border-radius:12px; box-shadow:0 10px 30px rgba(38,24,92,.15);"/>
+        </div>
+    </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div style="border:1px solid #e6e3f5; border-radius:18px; padding:36px;">
+        <h2 style="font-weight:800; color:#26185c; margin-bottom:10px;">Built for large databases</h2>
+        <div class="row" style="margin:24px 0;">
+            <div class="col-6 col-md-3 text-center mb-3"><div style="font-size:36px; font-weight:800; color:#5b39d0;">0</div><div style="color:#6b6f80;">extra queries on models you don't track</div></div>
+            <div class="col-6 col-md-3 text-center mb-3"><div style="font-size:36px; font-weight:800; color:#00aba6;">100,000</div><div style="color:#6b6f80;">history entries tested</div></div>
+            <div class="col-6 col-md-3 text-center mb-3"><div style="font-size:36px; font-weight:800; color:#e0a21c;">10 ms</div><div style="color:#6b6f80;">to open a record's history*</div></div>
+            <div class="col-6 col-md-3 text-center mb-3"><div style="font-size:36px; font-weight:800; color:#e0475c;">Constant</div><div style="color:#6b6f80;">cost whether you save 10 or 200 records</div></div>
+        </div>
+        <ul style="color:#555; font-size:15px; padding-left:18px;">
+            <li>Only the configured fields are read, before and after the save, in one batched query. Unchanged values are ignored.</li>
+            <li>All entries of an operation are written together, and names of related records are fetched once per operation.</li>
+            <li>Dedicated database indexes for record history, parent documents, dates and users.</li>
+            <li>Rule configuration is cached in memory and refreshed automatically when a rule changes.</li>
+        </ul>
+        <p style="color:#999; font-size:13px; margin:0;">* Measured on PostgreSQL 18 with 100,000 history entries. Your figures depend on your hardware and data.</p>
+    </div>
+</section>
+
+<!-- HOW TO START -->
+<section style="background:#f7f6fd; padding:48px 0; margin-bottom:64px; border-radius:18px;">
+    <div class="container" style="max-width: 1100px;">
+        <h2 style="font-weight:800; color:#26185c; margin-bottom:24px; text-align:center;">Up and running in 3 minutes</h2>
+        <div class="row">
+            <div class="col-md-3 mb-3 text-center"><div style="width:52px; height:52px; line-height:52px; border-radius:50%; background:#5b39d0; color:#fff; font-weight:800; font-size:22px; margin:0 auto 12px;">1</div>
+                <p style="color:#555;"><b>Install</b> the app. Suggested rules for your installed apps are created (disabled).</p></div>
+            <div class="col-md-3 mb-3 text-center"><div style="width:52px; height:52px; line-height:52px; border-radius:50%; background:#3b6fc0; color:#fff; font-weight:800; font-size:22px; margin:0 auto 12px;">2</div>
+                <p style="color:#555;">Go to <b>Change Tracker → Configuration → Tracking Rules</b> and review the fields.</p></div>
+            <div class="col-md-3 mb-3 text-center"><div style="width:52px; height:52px; line-height:52px; border-radius:50%; background:#1e8fa8; color:#fff; font-weight:800; font-size:22px; margin:0 auto 12px;">3</div>
+                <p style="color:#555;">Switch <b>Enabled</b> on, and give users the <b>Change Tracker / User</b> group.</p></div>
+            <div class="col-md-3 mb-3 text-center"><div style="width:52px; height:52px; line-height:52px; border-radius:50%; background:#00aba6; color:#fff; font-weight:800; font-size:22px; margin:0 auto 12px;">4</div>
+                <p style="color:#555;">Edit a document, then open <b>⚙ Actions → Change History</b>. Done.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- LIMITATIONS -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <h2 style="font-weight:800; color:#26185c; margin-bottom:10px;">Good to know</h2>
+    <p style="color:#555; font-size:16px;">We'd rather be clear up front than surprise you later:</p>
+    <ul style="color:#555; font-size:15px; padding-left:18px;">
+        <li>Changes written directly in the database with SQL (bypassing Odoo) can't be captured.</li>
+        <li>A total recomputed from <i>other</i> records (for example an order total after a line change) is not logged on the order; the line change itself is.</li>
+        <li>Computed fields that aren't stored, one2many, binary, properties and reference fields can't be selected in a rule.</li>
+        <li>Changes made while modules are being installed or upgraded are not recorded.</li>
+        <li>Deleted records keep their name and history, but they can't be restored.</li>
+        <li>Uninstalling the app removes all its history, so export it first if you need to keep it.</li>
+        <li>Your existing chatter tracking is unaffected and keeps working alongside this app.</li>
+    </ul>
+</section>
+
+<!-- QUALITY -->
+<section class="container" style="max-width: 1100px; margin-bottom: 64px;">
+    <div class="row">
+        <div class="col-md-4 mb-3"><div style="background:#eefaf9; border-radius:14px; padding:22px; height:100%;">
+            <h5 style="font-weight:700; color:#26185c;">✅ Thoroughly tested</h5>
+            <p style="color:#555; margin:0;">57 automated tests, plus 35 end-to-end scenarios with users of different rights across 2 companies, and a real-browser check of every screen.</p></div></div>
+        <div class="col-md-4 mb-3"><div style="background:#f5f3ff; border-radius:14px; padding:22px; height:100%;">
+            <h5 style="font-weight:700; color:#26185c;">🧩 Clean &amp; compatible</h5>
+            <p style="color:#555; margin:0;">Uses standard Odoo inheritance: no changes to Odoo's source code and no patches. Odoo's own Sales and Purchase test suites run with every rule enabled.</p></div></div>
+        <div class="col-md-4 mb-3"><div style="background:#fff8eb; border-radius:14px; padding:22px; height:100%;">
+            <h5 style="font-weight:700; color:#26185c;">🧹 Clean uninstall</h5>
+            <p style="color:#555; margin:0;">No leftovers: menus, actions, groups and tables are removed when you uninstall. Translation template included.</p></div></div>
+    </div>
+</section>
+
+<!-- ROADMAP + SUPPORT -->
+<section style="background: linear-gradient(135deg, #26185c 0%, #006e78 100%); border-radius:18px; padding:44px 32px; margin-bottom:24px;">
+    <div class="container" style="max-width: 1000px;">
+        <div class="row align-items-center">
+            <div class="col-md-7 mb-3">
+                <h3 style="color:#fff; font-weight:800;">Coming next</h3>
+                <ul style="color:#dfe3f5; font-size:15px; padding-left:18px; margin:0;">
+                    <li><b style="color:#fff;">Important change rules</b>: "price decreased by more than 10%", "delivery date moved later", "vendor changed after confirmation"</li>
+                    <li><b style="color:#fff;">Change reasons</b>: require a short comment for sensitive fields</li>
+                    <li><b style="color:#fff;">Change alerts</b>: notify managers of important changes</li>
+                </ul>
+            </div>
+            <div class="col-md-5 text-center">
+                <h4 style="color:#fff; font-weight:700;">Questions or custom needs?</h4>
+                <p style="color:#dfe3f5;">Contact us through the <b>Odoo Apps Store</b> contact form on this page.</p>
+            </div>
+        </div>
+    </div>
+</section>

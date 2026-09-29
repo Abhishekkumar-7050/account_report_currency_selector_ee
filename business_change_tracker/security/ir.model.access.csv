@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_change_log_user,business.change.log user,model_business_change_log,group_business_change_user,1,0,0,0
+access_business_change_rule_user,business.change.rule user,model_business_change_rule,group_business_change_user,1,0,0,0
+access_business_change_rule_manager,business.change.rule manager,model_business_change_rule,group_business_change_manager,1,1,1,1

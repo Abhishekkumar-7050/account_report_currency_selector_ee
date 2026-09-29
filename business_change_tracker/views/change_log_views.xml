@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="business_change_log_view_list" model="ir.ui.view">
+        <field name="name">business.change.log.list</field>
+        <field name="model">business.change.log</field>
+        <field name="arch" type="xml">
+            <list string="Change History" create="0" edit="0" delete="0" duplicate="0">
+                <field name="changed_at" string="Date"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="model_id" optional="show"/>
+                <field name="record_name"/>
+                <field name="parent_name" optional="hide"/>
+                <field name="operation" widget="badge"
+                       decoration-success="operation == 'create'"
+                       decoration-danger="operation == 'unlink'"
+                       decoration-info="operation == 'write'"/>
+                <field name="field_label"/>
+                <field name="old_value"/>
+                <field name="new_value"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                <field name="record_exists" column_invisible="1"/>
+                <button name="action_open_record" type="object" icon="fa-external-link"
+                        title="Open Record" invisible="not record_exists"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Record-level history: focused on What / Who / When / Before / After -->
+    <record id="business_change_log_view_list_record" model="ir.ui.view">
+        <field name="name">business.change.log.list.record</field>
+        <field name="model">business.change.log</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <list string="Change History" create="0" edit="0" delete="0" duplicate="0">
+                <field name="changed_at" string="Date"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="record_name" string="Record" optional="show"/>
+                <field name="operation" widget="badge"
+                       decoration-success="operation == 'create'"
+                       decoration-danger="operation == 'unlink'"
+                       decoration-info="operation == 'write'"/>
+                <field name="field_label"/>
+                <field name="old_value"/>
+                <field name="new_value"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="business_change_log_view_form" model="ir.ui.view">
+        <field name="name">business.change.log.form</field>
+        <field name="model">business.change.log</field>
+        <field name="arch" type="xml">
+            <form string="Change" create="0" edit="0" delete="0" duplicate="0">
+                <header>
+                    <button name="action_open_record" type="object" string="Open Record"
+                            class="btn-primary" invisible="not record_exists"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-warning" role="alert" invisible="record_exists">
+                        Record no longer exists.
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="record_name" readonly="1"/></h1>
+                        <field name="operation" widget="badge" readonly="1"/>
+                    </div>
+                    <group>
+                        <group string="What">
+                            <!-- ir.model is technical: regular users can't open it -->
+                            <field name="model_id" options="{'no_open': True}"/>
+                            <field name="field_label" invisible="operation != 'write'"/>
+                            <field name="parent_name" invisible="not parent_name"/>
+                        </group>
+                        <group string="Who / When">
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="changed_at"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group invisible="operation != 'write'">
+                        <group string="Old Value"><field name="old_value" nolabel="1" colspan="2"/></group>
+                        <group string="New Value"><field name="new_value" nolabel="1" colspan="2"/></group>
+                    </group>
+                    <field name="record_exists" invisible="1"/>
+                    <field name="is_restricted" invisible="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="business_change_log_view_search" model="ir.ui.view">
+        <field name="name">business.change.log.search</field>
+        <field name="model">business.change.log</field>
+        <field name="arch" type="xml">
+            <search string="Change History">
+                <field name="record_name" string="Record" filter_domain="['|', ('record_name', 'ilike', self), ('parent_name', 'ilike', self)]"/>
+                <field name="field_label" string="Field"/>
+                <field name="user_id"/>
+                <field name="model_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="old_value_text" string="Old Value"/>
+                <field name="new_value_text" string="New Value"/>
+                <filter name="filter_write" string="Changes" domain="[('operation', '=', 'write')]"/>
+                <filter name="filter_create" string="Creations" domain="[('operation', '=', 'create')]"/>
+                <filter name="filter_unlink" string="Deletions" domain="[('operation', '=', 'unlink')]"/>
+                <separator/>
+                <filter name="filter_mine" string="My Changes" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="filter_changed_at" string="Date" date="changed_at"/>
+                <group>
+                    <filter name="groupby_model" string="Model" context="{'group_by': 'model_id'}"/>
+                    <filter name="groupby_record" string="Record" context="{'group_by': 'record_name'}"/>
+                    <filter name="groupby_field" string="Field" context="{'group_by': 'field_label'}"/>
+                    <filter name="groupby_user" string="User" context="{'group_by': 'user_id'}"/>
+                    <filter name="groupby_operation" string="Operation" context="{'group_by': 'operation'}"/>
+                    <filter name="groupby_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                    <filter name="groupby_day" string="Day" context="{'group_by': 'changed_at:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_business_change_log" model="ir.actions.act_window">
+        <field name="name">Change History</field>
+        <field name="res_model">business.change.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="business_change_log_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No changes recorded yet</p>
+            <p>Enable a tracking rule in Change Tracker → Configuration → Tracking Rules,
+               then edit a tracked field: the change appears here.</p>
+        </field>
+    </record>
+
+    <record id="action_business_change_log_record" model="ir.actions.act_window">
+        <field name="name">Change History</field>
+        <field name="res_model">business.change.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="business_change_log_view_search"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('business_change_log_view_list_record')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('business_change_log_view_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No tracked change on this record yet</p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_business_change_root" name="Change Tracker" sequence="90"
+              web_icon="business_change_tracker,static/description/icon.png"
+              groups="group_business_change_user"/>
+    <menuitem id="menu_business_change_log" name="Change History" parent="menu_business_change_root"
+              action="action_business_change_log" sequence="10"/>
+    <menuitem id="menu_business_change_config" name="Configuration" parent="menu_business_change_root"
+              sequence="90" groups="group_business_change_manager"/>
+    <menuitem id="menu_business_change_rule" name="Tracking Rules" parent="menu_business_change_config"
+              action="action_business_change_rule" sequence="10"/>
+    <menuitem id="menu_business_change_settings" name="Settings" parent="menu_business_change_config"
+              action="action_business_change_settings" sequence="20" groups="base.group_system"/>
+</odoo>
